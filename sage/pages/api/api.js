@@ -16,7 +16,7 @@ export default function handler(req, res) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          prompt: 'why does my dog have a wet nose?',
+          prompt: 'what is ketchup?',
           model: 'text-davinci-003',
           max_tokens: 30,
           temperature: 1.0,
