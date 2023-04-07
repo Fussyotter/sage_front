@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { fetchChat, chatTest } from './api/hello';
+import { fetchChat, chatTest, gptTest, } from './api/hello';
+import axios from 'axios';
+import Cors from 'cors';
 
 export default function ChatDisplay() {
 	const [orders, setOrders] = useState([]);
@@ -15,6 +17,7 @@ export default function ChatDisplay() {
 
 	return (
 		<>
+        
 			<div>
 				<button onClick={chatTest}>yea pls god</button>
 			</div>
