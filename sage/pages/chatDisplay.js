@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchChat, chatTest, gptTest, } from './api/hello';
+import { fetchChat, chatTest, } from './api/hello';
 import axios from 'axios';
 import Cors from 'cors';
 

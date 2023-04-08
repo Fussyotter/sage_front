@@ -23,6 +23,7 @@ export async function chatTest() {
 	const data = await response.json();
 	return data;
 }
+
 // f u function below
 
 // export async function gptTest() {
