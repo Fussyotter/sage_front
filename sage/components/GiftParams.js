@@ -43,7 +43,7 @@ export default function GiftParams() {
 				placeholder='Interest 2'
 			/>
 			<button onClick={handleClick}>Get Gift Idea</button>
-			{/* <p>{answer}</p> */}
+			
             <div>
                       {gift && <p>{gift.choices[0].text}</p>}
 
