@@ -19,11 +19,14 @@ export async function fetchChat(loggedInUser) {
 }
 
 export async function chatTest() {
+	const token = localStorage.getItem('token');
+	const headers = { Authorization: `Token ${token}`, 'Content-Type': 'application/json' };
 	const response = await fetch('http://localhost:8000/chat/logintest/', {
 		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
+		// headers: {
+		// 	'Content-Type': 'application/json',
+		// },
+		headers,
 		body: JSON.stringify({ content: 'bigtest' }),
 	});
 	console.log(response);

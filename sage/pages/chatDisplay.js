@@ -1,6 +1,6 @@
 import { useEffect, useState,useContext } from 'react';
 import { UserContext } from '@/context/context';
-import { fetchChat, chatTest, userToUserMessage } from './api/hello';
+import { fetchChat, chatTest, userToUserMessage } from './api/messageFunc';
 
 import axios from 'axios';
 import Cors from 'cors';
@@ -8,6 +8,8 @@ import Cors from 'cors';
 export default function ChatDisplay() {
 	const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 	const [chatData, setChatData] = useState([]);
+	// didn't realize i could use timestamps as state.
+	const [chatUpdate, setChatUpdate] = useState(Date.now())
 
 	useEffect(() => {
 		const handleFetchChat = async () => {
@@ -17,11 +19,15 @@ export default function ChatDisplay() {
 		if (loggedInUser) {
 			handleFetchChat();
 		}
-	}, [loggedInUser]);
+	}, [loggedInUser,chatUpdate]);
+	const handleChatTestClick = () => {
+		chatTest();
+		setChatUpdate(Date.now());
+		};
 	return (
 		<>
 			<div>
-				<button onClick={chatTest}>yea pls god</button>
+				<button onClick={handleChatTestClick}>yea pls god</button>
 			</div>
 			{loggedInUser ? (
 				<table>

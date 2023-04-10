@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { userToUserMessage } from '@/pages/api/hello';
+import { userToUserMessage } from '@/pages/api/messageFunc';
 
 export default function UserMessage() {
 	const [receiver, setReceiver] = useState('');
