@@ -16,9 +16,9 @@ export default function Home() {
   
     <>
       <Login/>
-      <UserMessage/>
       <GiftParams/>
     
+      <UserMessage/>
       <ChatDisplay/>
     </>
   )

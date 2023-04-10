@@ -34,8 +34,9 @@ export default function ChatDisplay() {
 					<thead>
 						<tr>
 							<th>Chat ID</th>
-							<th>Customer Name</th>
-							<th>Product Name</th>
+							{/* <th>Sent At</th> */}
+							<th>Message</th>
+							<th>Recipient</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -43,6 +44,7 @@ export default function ChatDisplay() {
 							chatData.map((chat) => (
 								<tr key={chat.id}>
 									<td>{chat.id}</td>
+									{/* <td>{chat.timestamp}</td> */}
 									<td>{chat.content}</td>
 									<td>{chat.recipient}</td>
 								</tr>

@@ -17,8 +17,10 @@ export default function UserMessage() {
 
 	return (
 		<div>
+			<details>
+				<summary>Send a message</summary>
 			<form onSubmit={handleSendMessage}>
-				<label htmlFor='receiver'>Receiver:</label>
+				<label htmlFor='receiver'>Recipient:</label>
 				<input
 					type='text'
 					id='receiver'
@@ -26,7 +28,7 @@ export default function UserMessage() {
 					onChange={(e) => setReceiver(e.target.value)}
 				/>
 
-				<label htmlFor='content'>Content:</label>
+				<label htmlFor='content'>Message:</label>
 				<textarea
 					id='content'
 					value={content}
@@ -35,6 +37,7 @@ export default function UserMessage() {
 
 				<button type='submit'>Send Message</button>
 			</form>
+		</details>
 		</div>
 	);
 }

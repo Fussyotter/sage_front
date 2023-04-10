@@ -18,6 +18,8 @@ if (typeof window !== 'undefined') {
 	token = localStorage.getItem('token');
 	headers = { Authorization: `Token ${token}` };
 }
+
+// show all messages sent and received
 export async function fetchChat(loggedInUser) {
 	const response = await fetch(`http://localhost:8000/chat/${loggedInUser}`, {
 		headers,
@@ -25,8 +27,8 @@ export async function fetchChat(loggedInUser) {
 	const data = await response.json();
 	return data;
 }
-
-export async function chatTest() {
+// test to send chat to specific user.  needs to be modified or removed now that everything is working
+export async function chatTest(loggedInUser) {
 	const headersWithContentType = { ...headers, 'Content-Type': 'application/json' }
 	const response = await fetch('http://localhost:8000/chat/logintest/', {
 		method: 'POST',
@@ -37,6 +39,9 @@ export async function chatTest() {
 	const data = await response.json();
 	return data;
 }
+
+// user to user messaging
+
 export async function userToUserMessage(receiver, content) {
 	const headersWithContentType = {
 		...headers,
