@@ -1,18 +1,18 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import axios from "axios";
+import axios from 'axios';
 
 export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
+	res.status(200).json({ name: 'John Doe' });
 }
 
 export async function fetchChat() {
-	const response = await fetch('http://localhost:8000/chat/chattwo');
+	const response = await fetch('http://localhost:8000/chat/logintest');
 	const data = await response.json();
 	return data;
 }
 
 export async function chatTest() {
-	const response = await fetch('http://localhost:8000/chat/chattwo/', {
+	const response = await fetch('http://localhost:8000/chat/logintest/', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -23,7 +23,19 @@ export async function chatTest() {
 	const data = await response.json();
 	return data;
 }
-
+// const { receiver = '', content = '' } = req.body;
+export async function userToUserMessage(receiver, content) {
+	const response = await fetch(`http://localhost:8000/chat/${receiver}}/`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({ content }),
+	});
+	console.log(response);
+	const data = await response.json();
+	return data;
+}
 // f u function below
 
 // export async function gptTest() {

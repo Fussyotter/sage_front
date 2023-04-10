@@ -16,7 +16,7 @@ export default function handler(req, res) {
 		interest2 = '',
 	} = req.body;
 
-	const prompt = `Give me a gift idea for "${recipient}", they are my "${relationship}" and they like "${interest1}" and "${interest2}".  Limit the response to 5 items, specific item names.`;
+	const prompt = `Give me a gift idea for "${recipient}", they are my "${relationship}" and they like "${interest1}" and "${interest2}".  Limit the response to 5 items, and can I please have links to these items.`;
 
 	corsMiddleware(req, res, async () => {
 		try {

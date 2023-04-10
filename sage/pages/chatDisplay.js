@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import { fetchChat, chatTest, } from './api/hello';
+import { fetchChat, chatTest, userToUserMessage } from './api/hello';
 import axios from 'axios';
 import Cors from 'cors';
 
 export default function ChatDisplay() {
-	const [orders, setOrders] = useState([]);
+	const [chats, setChats] = useState([]);
 
 	useEffect(() => {
 		async function fetchChatData() {
 			const data = await fetchChat();
-			setOrders(data);
+			setChats(data);
 		}
 
 		fetchChatData();
@@ -30,11 +30,11 @@ export default function ChatDisplay() {
 					</tr>
 				</thead>
 				<tbody>
-					{orders.map((order) => (
-						<tr key={order.id}>
-							<td>{order.id}</td>
-							<td>{order.content}</td>
-							<td>{order.recipient}</td>
+					{chats.map((chat) => (
+						<tr key={chat.id}>
+							<td>{chat.id}</td>
+							<td>{chat.content}</td>
+							<td>{chat.recipient}</td>
 						</tr>
 					))}
 				</tbody>
