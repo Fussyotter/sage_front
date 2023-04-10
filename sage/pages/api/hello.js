@@ -1,12 +1,19 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import axios from 'axios';
 
+
+
 export default function handler(req, res) {
 	res.status(200).json({ name: 'John Doe' });
 }
 
-export async function fetchChat() {
-	const response = await fetch('http://localhost:8000/chat/logintest');
+export async function fetchChat(loggedInUser) {
+	const token = localStorage.getItem('token'); // Get the token from local storage
+	const headers = { Authorization: `Bearer ${token}` }; // Add the token to the headers
+
+	const response = await fetch(`http://localhost:8000/chat/${loggedInUser}`, {
+		headers,
+	});
 	const data = await response.json();
 	return data;
 }
@@ -25,14 +32,23 @@ export async function chatTest() {
 }
 // const { receiver = '', content = '' } = req.body;
 export async function userToUserMessage(receiver, content) {
-	const response = await fetch(`http://localhost:8000/chat/${receiver}}/`, {
+	const token = localStorage.getItem('token'); // Get the token from local storage
+	// console.log(token)
+	const headers = {
+		'Content-Type': 'application/json',
+		// i was using bearer and not Token ${token}, fixed.
+		Authorization: `Token ${token}`, 
+	};
+	console.log(headers)
+
+	const response = await fetch(`http://localhost:8000/chat/${receiver}/`, {
 		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
+		headers,
 		body: JSON.stringify({ content }),
 	});
+
 	console.log(response);
+
 	const data = await response.json();
 	return data;
 }

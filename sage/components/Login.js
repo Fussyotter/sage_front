@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { login, logout } from "@/functions/auth";
+import { UserContext } from "@/context/context";
 
 export default function Login() {
     const [username, setUsername] = useState('');
@@ -7,6 +8,9 @@ export default function Login() {
     // not entirely sure i'll need these next two
     const [loginStatus, setLoginStatus] = useState(null);
     const [user, setUser] = useState(null);
+
+    // trying context out
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -15,6 +19,8 @@ export default function Login() {
                 username: username,
                 password: password,
             });
+            setLoggedInUser(user.username);
+
             setUser(user);
             setLoginStatus(true);
 
@@ -28,6 +34,8 @@ export default function Login() {
         try {
             await logout();
             console.log('logout successful');
+            setLoggedInUser(null);
+
             setLoginStatus(false);
             setUser(null);
         } catch (error) {

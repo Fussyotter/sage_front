@@ -1,40 +1,37 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useContext } from 'react';
+import { UserContext } from '@/context/context';
 import { fetchChat, chatTest, userToUserMessage } from './api/hello';
+
 import axios from 'axios';
 import Cors from 'cors';
 
 export default function ChatDisplay() {
-	const [chats, setChats] = useState([]);
+	const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+	const [chatData, setChatData] = useState([]);
 
 	useEffect(() => {
-		async function fetchChatData() {
-			const data = await fetchChat();
-			setChats(data);
-		}
-
-		fetchChatData();
-	}, []);
-
+		const getChatData = async () => {
+			const data = await fetchChat(loggedInUser);
+			setChatData(data);
+		};
+		getChatData();
+	}, [loggedInUser]);
 	return (
 		<>
-        
-			<div>
-				<button onClick={chatTest}>yea pls god</button>
-			</div>
 			<table>
 				<thead>
 					<tr>
-						<th>Order ID</th>
+						<th>Chat ID</th>
 						<th>Customer Name</th>
 						<th>Product Name</th>
 					</tr>
 				</thead>
 				<tbody>
-					{chats.map((chat) => (
+					{chatData.map((chat) => (
 						<tr key={chat.id}>
 							<td>{chat.id}</td>
-							<td>{chat.content}</td>
-							<td>{chat.recipient}</td>
+							<td>{chat.customerName}</td>
+							<td>{chat.productName}</td>
 						</tr>
 					))}
 				</tbody>

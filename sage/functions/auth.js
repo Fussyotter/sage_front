@@ -22,7 +22,7 @@ export const login = async (userData) => {
 
 		const { auth_token } = response.data;
 		setToken(auth_token);
-		console.log(token);
+		// console.log(token);
 		const user = await getCurrentUser();
 		return { success: true, user };
 	} catch (error) {
