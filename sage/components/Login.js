@@ -69,6 +69,7 @@ export default function Login() {
 					</div>
 					<button onClick={handleLogin}>Log in</button>
 				</details>
+                {/* <button onClick={handleLogout}>Log out</button> */}
 			</>
 		);
 }
