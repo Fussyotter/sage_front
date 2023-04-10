@@ -9,7 +9,7 @@ export default function handler(req, res) {
 
 export async function fetchChat(loggedInUser) {
 	const token = localStorage.getItem('token'); // Get the token from local storage
-	const headers = { Authorization: `Bearer ${token}` }; // Add the token to the headers
+	const headers = { Authorization: `Token ${token}` }; // Add the token to the headers
 
 	const response = await fetch(`http://localhost:8000/chat/${loggedInUser}`, {
 		headers,
