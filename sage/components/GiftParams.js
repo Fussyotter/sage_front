@@ -1,53 +1,63 @@
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { GiftContext } from '@/context/CurrentGiftContext';
 
 export default function GiftParams() {
-	const [gift, setGift] = useState('');
-	const [recipient, setRecipient] = useState('');
-	const [relationship, setRelationship] = useState('');
-	const [interest1, setInterest1] = useState('');
-	const [interest2, setInterest2] = useState('');
+	const {
+		gift,
+		setGift,
+
+		relationship,
+		setRelationship,
+		interest1,
+		setInterest1,
+		interest2,
+		setInterest2,
+	} = useContext(GiftContext);
+
+	useEffect(() => {
+		console.log(gift);
+	}, [gift]);
 
 	const handleClick = async () => {
 		const response = await fetch('/api/postReq', {
 			method: 'POST',
-			body: JSON.stringify({ recipient, relationship, interest1, interest2 }),
+			body: JSON.stringify({ relationship, interest1, interest2 }),
 			headers: {
 				'Content-Type': 'application/json',
 			},
 		});
 		const data = await response.json();
 		setGift(data);
-        console.log(gift)
 	};
 
 	return (
-		<>
+		<div className='gift-params-container'>
 			<input
-				value={recipient}
-				onChange={(e) => setRecipient(e.target.value)}
-				placeholder='Recipient'
-			/>
-			<input
+				className='input-field'
 				value={relationship}
 				onChange={(e) => setRelationship(e.target.value)}
 				placeholder='Relationship'
 			/>
 			<input
+				className='input-field'
 				value={interest1}
 				onChange={(e) => setInterest1(e.target.value)}
 				placeholder='Interest 1'
 			/>
 			<input
+				className='input-field'
 				value={interest2}
 				onChange={(e) => setInterest2(e.target.value)}
 				placeholder='Interest 2'
 			/>
-			<button onClick={handleClick}>Get Gift Idea</button>
-			
-            <div>
-                      {gift && <p>{gift.choices[0].text}</p>}
-
-            </div>
-		</>
+			<button className='submit-button' onClick={handleClick}>
+				Get Gift Idea
+			</button>
+			{gift && gift.choices && gift.choices[0] && (
+				<div className='gift-result-container'>
+					<p className='gift-result-text'>{gift.choices[0].text}</p>
+				</div>
+			)}
+		</div>
 	);
 }

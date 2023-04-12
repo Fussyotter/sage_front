@@ -10,13 +10,12 @@ export default function handler(req, res) {
 		return res.status(400).json({ message: 'Only POST requests allowed' });
 	}
 	const {
-		recipient = '',
 		relationship = '',
 		interest1 = '',
 		interest2 = '',
 	} = req.body;
 
-	const prompt = `Give me a gift idea for "${recipient}", they are my "${relationship}" and they like "${interest1}" and "${interest2}".  Limit the response to 5 items, and can I please have links to these items.`;
+	const prompt = `Can I have 5 gift ideas for my ${relationship} they like "${interest1}" and "${interest2}".  Please format the response as GiftName: 'name',  Description:'description', Price: 'estimated price', Link:'link', AlternativeLink: 'alternative link'.  The link should not be to the specific item but to home pages of sites, with suggestions for one other site.  Formatted as a json object.`;
 
 	corsMiddleware(req, res, async () => {
 		try {
@@ -30,7 +29,7 @@ export default function handler(req, res) {
 				body: JSON.stringify({
 					prompt,
 					model: 'text-davinci-003',
-					max_tokens: 30,
+					max_tokens: 500,
 					temperature: 1.0,
 				}),
 			});

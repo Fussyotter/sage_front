@@ -14,16 +14,42 @@ import Cors from 'cors';
 export default function Home() {
 
   return (
-  
-    <>
-    <div className='nav'>
-      <Login/>
-      <UserMessage/>
-      <ChatDisplay/>
-
+		<>
+			<div className='header'>
+				<div className='nav'>
+					<Login />
+				</div>
+				<div className='messageComponents'>
+					<UserMessage />
+					<ChatDisplay />
+					<div className='giftReq'>
+						<GiftParams />
+					</div>
+				</div>
+			</div>
+      {/* need to clean these up in their own component */}
+    <div id="background-wrap">
+    <div className="x1">
+        <div className="cloud"></div>
     </div>
-    <Background/>
-      <GiftParams/>
-    </>
-  )
+
+    <div className="x2">
+        <div className="cloud"></div>
+    </div>
+
+    <div className="x3">
+        <div className="cloud"></div>
+    </div>
+
+    <div className="x4">
+        <div className="cloud"></div>
+    </div>
+
+    <div className="x5">
+        <div className="cloud"></div>
+    </div>
+</div>
+			<Background />
+		</>
+	);
 }
