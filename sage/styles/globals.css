@@ -1,5 +1,7 @@
 :root {
-  --max-width: 1100px;
+  background-image: url('/backdrop2.png');
+  background-size: cover;
+  /* --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
@@ -21,7 +23,6 @@
     rgba(255, 255, 255, 1),
     rgba(255, 255, 255, 0)
   );
-
   --tile-start-rgb: 239, 245, 249;
   --tile-end-rgb: 228, 232, 233;
   --tile-border: conic-gradient(
@@ -32,20 +33,175 @@
     #00000010,
     #00000010,
     #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
+    );
+    
+    --callout-rgb: 238, 240, 241;
+    --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+  --card-border-rgb: 131, 134, 135; */
+}
+.nav {
+      display: flex;
+      justify-content: space-between;
+      background-color: #ADD8E6;
+}
+/* trying weird container animation */
+/* .container {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 50%;
+ height: 100vh;
+ border-radius: 50%;
+ background-color: white;
+ animation: pulse 2s ease-in-out infinite;
+ animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+} */
+.container { 
+  position:fixed;
+  height: 50vh;
+  width:40%;
+  /* top: 20%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  /* left: 50%;  */
+  /* border-style: dashed; */
+  border-radius:50%;
+  /* overflow: hidden; */
+  /* margin: 0 auto; */
+}
+.container.moving {
+  position:fixed;
+  animation: slide 9s ease-in-out infinite;
+  top:35%;
+  left:20%;
+    transform: translate(-50%, -50%);
+
 }
 
-@media (prefers-color-scheme: dark) {
+.container.fixed {
+position: fixed;
+top: 35%;
+left: 20%;
+transform: translate(-50%, -50%);
+}
+.container.fixed .overlay {
+  animation: none;
+}
+
+.container:before {
+  content: '';
+  display: block;
+  /* padding-top: 100%; */
+}
+.container:hover .background {
+  transform: scale(1.1);
+}
+/* .container {
+  animation: slide 9s ease-in-out infinite;
+} */
+
+/*  trying to make my handsome wizard do a lazy arc across the screen */
+@keyframes slide {
+  0% {
+    transform: translate(-50%, -50%) translateY(0) translateX(0) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-50%, -50%) translateY(10vh) translateX(15%) rotate(-45deg);
+  }
+
+  20% {
+    transform: translate(-50%, -50%) translateY(20vh) translateX(25%) rotate(0deg);
+  }
+
+  30% {
+    transform: translate(-50%, -50%) translateY(30vh) translateX(35%) rotate(-45deg);
+  }
+
+  40% {
+    transform: translate(-50%, -50%) translateY(40vh) translateX(45%) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translateY(50vh) translateX(55%) rotate(-45deg);
+  }
+
+  60% {
+    transform: translate(-50%, -50%) translateY(45vh) translateX(65%) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(-50%, -50%) translateY(35vh) translateX(75%) rotate(-45deg);
+  }
+
+  80% {
+    transform: translate(-50%, -50%) translateY(25vh) translateX(85%) rotate(0deg);
+  }
+
+  90% {
+    transform: translate(-50%, -50%) translateY(15vh) translateX(95%) rotate(-45deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) translateY(0) translateX(100%) rotate(0deg);
+  }
+}
+.background {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 80%;
+  height: 80%;
+  z-index: -1;
+  animation: Background 30s ease infinite;
+  background-size: cover;
+  background-image: url('/wizard.png');
+  background-repeat: no-repeat;
+  /* disable image repetition */
+  transform-style: preserve-3d;
+  /* transform: translateZ(-40px) rotateY(0deg); */
+  /* filter: blur(1px); */
+  border-radius: 500px;
+}
+@keyframes Background {
+  0% {
+    transform: translateZ(-50px) rotateY(0deg);
+  }
+
+  100% {
+    transform: translateZ(-50px) rotateY(360deg);
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 110%;
+  transform: translateY(-50%);
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#typed-text {
+  color: red;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  .background {
+    transform: translateZ(-20px) rotateY(0deg);
+  }
+
+
+}
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
-
+    
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
     --secondary-glow: linear-gradient(
       to bottom right,
@@ -104,4 +260,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */
