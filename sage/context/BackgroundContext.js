@@ -5,11 +5,20 @@ export const BackgroundContext = createContext();
 
 export const BackgroundProvider = ({ children }) => {
 	const [moving, setMoving] = useState(false);
-    const handleMovingChange = () => {
-				setMoving(!moving);
-			};
+	const [animationProgress, setAnimationProgress] = useState(0); // New state here
+
+	// const handleMovingChange = () => {
+	// 	setMoving(!moving);
+	// };
 	return (
-		<BackgroundContext.Provider value={[moving, setMoving, handleMovingChange]}>
+		<BackgroundContext.Provider
+			value={[
+				moving,
+				setMoving,
+				// handleMovingChange,
+				animationProgress,
+				setAnimationProgress,
+			]}>
 			{children}
 		</BackgroundContext.Provider>
 	);
