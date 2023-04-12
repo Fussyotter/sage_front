@@ -14,16 +14,18 @@ import Cors from 'cors';
 export default function Home() {
 
   return (
-  
-    <>
-    <div className='nav'>
-      <Login/>
-      <UserMessage/>
-      <ChatDisplay/>
+		<><div className='header'>
+			<div className='nav'>
+				<Login />
+			</div>
+			<div className='messageComponents'>
+				<UserMessage />
+				<ChatDisplay />
+			</div>
+      </div>
 
-    </div>
-    <Background/>
-      <GiftParams/>
-    </>
-  )
+			<GiftParams />
+			<Background />
+		</>
+	);
 }
