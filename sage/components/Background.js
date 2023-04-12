@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { BackgroundContext } from '@/context/BackgroundContext';
 
 const Background = () => {
-  const [moving, setMoving] = useState(true);
-  const [typedText, setTypedText] = useState('');
-  const containerClass = moving ? 'container moving' : 'container fixed';
+	const [typedText, setTypedText] = useState('');
+	const [moving, setMoving] = useContext(BackgroundContext);
 
-  useEffect(() => {
+	const handleClick = () => {
+		setMoving(!moving);
+	};
+
+	useEffect(() => {
 		if (moving) {
 			const text = "Hehe, I'm casting a spell for youuuuu";
 			let i = 0;
@@ -26,8 +30,11 @@ const Background = () => {
 			return () => clearInterval(intervalId);
 		}
 	}, [moving]);
-  return (
-		<div className={containerClass} onClick={() => setMoving(!moving)}>
+
+	const containerClass = moving ? 'container moving' : 'container fixed';
+
+	return (
+		<div className={containerClass} onClick={handleClick}>
 			<div className='overlay'>
 				<div className='bubble'>
 					<span id='typed-text'>{typedText}</span>
