@@ -43,7 +43,7 @@ export default function ChatDisplay() {
 
 		
 			<button className='ChatDisplay__toggle' onClick={handleToggleClick}>
-				{isOpen ? 'X' : 'Chat'}
+				{isOpen ? 'X' : 'Inbox'}
 			</button>
 			<div className={`ChatDisplay ${isOpen ? 'ChatDisplay--open' : ''}`}>
 				<div className='ChatDisplay__scroll'>
