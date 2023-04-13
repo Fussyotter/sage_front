@@ -27,45 +27,12 @@ export default function GiftParams() {
 				'Content-Type': 'application/json',
 			},
 		});
-		const data = await response.json();
-		console.log(data)
-		setGift(data[0]);
+		const data = await response.text();
+		const json= JSON.parse(data.trim());
+		console.log(json)
+		setGift(json[0]);
 
-		// setGift1({
-		// 	name: data.choices[0].text,
-		// 	description: '',
-		// 	price: '',
-		// 	link: '',
-		// 	alternativeLink: '',
-		// });
-		// setGift2({
-		// 	name: data.choices[1].text,
-		// 	description: '',
-		// 	price: '',
-		// 	link: '',
-		// 	alternativeLink: '',
-		// });
-		// setGift3({
-		// 	name: data.choices[2].text,
-		// 	description: '',
-		// 	price: '',
-		// 	link: '',
-		// 	alternativeLink: '',
-		// });
-		// setGift4({
-		// 	name: data.choices[3].text,
-		// 	description: '',
-		// 	price: '',
-		// 	link: '',
-		// 	alternativeLink: '',
-		// });
-		// setGift5({
-		// 	name: data.choices[4].text,
-		// 	description: '',
-		// 	price: '',
-		// 	link: '',
-		// 	alternativeLink: '',
-		// });
+
 	};
 
 	return (
@@ -91,11 +58,64 @@ export default function GiftParams() {
 			<button className='submit-button' onClick={handleClick}>
 				Get Gift Idea
 			</button>
-			{/* {gift && gift.choices && gift.choices[0] && (
-				<div className='gift-result-container'>
-					<p className='gift-result-text'>{gift.choices[0].text}</p>
-				</div> */}
-			{/* )} */}
 		</div>
 	);
 }
+// import React, { useState } from 'react';
+{/* {gift && gift.choices && gift.choices[0] && (
+	<div className='gift-result-container'>
+		<p className='gift-result-text'>{gift.choices[0].text}</p>
+	</div> */}
+{/* )} */}
+
+// export default function GiftParams() {
+// 	const [gift, setGift] = useState('');
+// 	const [recipient, setRecipient] = useState('');
+// 	const [relationship, setRelationship] = useState('');
+// 	const [interest1, setInterest1] = useState('');
+// 	const [interest2, setInterest2] = useState('');
+
+// 	const handleClick = async () => {
+// 		const response = await fetch('/api/postReq', {
+// 			method: 'POST',
+// 			body: JSON.stringify({ recipient, relationship, interest1, interest2 }),
+// 			headers: {
+// 				'Content-Type': 'application/json',
+// 			},
+// 		});
+// 		const data = await response.json();
+// 		setGift(data);
+//         console.log(gift)
+// 	};
+
+// 	return (
+// 		<>
+// 			<input
+// 				value={recipient}
+// 				onChange={(e) => setRecipient(e.target.value)}
+// 				placeholder='Recipient'
+// 			/>
+// 			<input
+// 				value={relationship}
+// 				onChange={(e) => setRelationship(e.target.value)}
+// 				placeholder='Relationship'
+// 			/>
+// 			<input
+// 				value={interest1}
+// 				onChange={(e) => setInterest1(e.target.value)}
+// 				placeholder='Interest 1'
+// 			/>
+// 			<input
+// 				value={interest2}
+// 				onChange={(e) => setInterest2(e.target.value)}
+// 				placeholder='Interest 2'
+// 			/>
+// 			<button onClick={handleClick}>Get Gift Idea</button>
+			
+//             <div>
+//                       {gift && <p>{gift.choices[0].text}</p>}
+
+//             </div>
+// 		</>
+// 	);
+// }
