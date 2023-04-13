@@ -10,12 +10,12 @@ export default function handler(req, res) {
 		return res.status(400).json({ message: 'Only POST requests allowed' });
 	}
 	const {
+		recipient = '',
 		relationship = '',
-		interest1 = '',
-		interest2 = '',
+		interest = '',
 	} = req.body;
 
-	const prompt = `Can I have 5 gift ideas for my ${relationship} they like "${interest1}" and "${interest2}".  Please format the response as GiftName: 'name',  Description:'description', Price: 'estimated price', Link:'link', AlternativeLink: 'alternative link'.  The link should not be to the specific item but to home pages of sites, with suggestions for one other site.  Formatted as a json object.`;
+	const prompt = `Give me a gift idea for "${recipient}", they are my "${relationship}" and they like "${interest}".  Limit the response to 5 items.  Can I have the names of the 5 items in an html list, and can I have the links to these 5 items in another html list following the first. Can I also have the response in magical tone with line breaks after each sentence.`;
 
 	corsMiddleware(req, res, async () => {
 		try {
@@ -29,7 +29,7 @@ export default function handler(req, res) {
 				body: JSON.stringify({
 					prompt,
 					model: 'text-davinci-003',
-					max_tokens: 500,
+					max_tokens: 1500,
 					temperature: 1.0,
 				}),
 			});

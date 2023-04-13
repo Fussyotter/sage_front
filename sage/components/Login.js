@@ -46,9 +46,9 @@ export default function Login() {
     }
 
     return (
-			<>
-				<details>
-					<summary>Login</summary>
+			<>{!loginStatus ? (
+				<details className='login-details'>
+					<summary className='login-summary'>Login</summary>
 					<div>
 						<label htmlFor='username'>Username:</label>
 						<input
@@ -68,8 +68,9 @@ export default function Login() {
 						/>
 					</div>
 					<button onClick={handleLogin}>Log in</button>
-				</details>
-                {/* <button onClick={handleLogout}>Log out</button> */}
+				</details>): (
+                  
+                <button onClick={handleLogout}>Log out</button>)}
 			</>
 		);
 }
