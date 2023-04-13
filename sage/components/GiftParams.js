@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { GiftContext } from '@/context/CurrentGiftContext';
 import { BackgroundContext } from '@/context/BackgroundContext';
+import { UserContext } from '@/context/context';
 
 export default function GiftParams() {
 	const {
@@ -15,6 +16,7 @@ export default function GiftParams() {
 
 	} = useContext(GiftContext);
 	const [moving, setMoving] = useContext(BackgroundContext);
+	const [loggedInUser] = useContext(UserContext)
 
 
 	useEffect(() => {
@@ -45,7 +47,7 @@ export default function GiftParams() {
 
 	return (
 		<div className='gift-params-container'>
-			<h1>Test </h1>
+			{loggedInUser ? ( <h1>TELL THE WIZARD THE RELATIONSHIP YOU HAVE WITH THE RECIPIENT OF THE GIFT! AND ALSO WHAT THEY ARE INTERESTED IN! NO MORE BECAUSE IT COULD TIRE THE WIZARD OUT TO HEAR MORE FROM YOU {loggedInUser}</h1>):(<h1> YOU MUST LOG IN TO CONSULT THE WIZARD</h1>) }
 			<input
 				className='input-field'
 				value={relationship}

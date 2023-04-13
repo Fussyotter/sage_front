@@ -46,7 +46,7 @@ export default function Login() {
     }
 
     return (
-			<>
+			<>{!loginStatus ? (
 				<details className='login-details'>
 					<summary className='login-summary'>Login</summary>
 					<div>
@@ -68,8 +68,9 @@ export default function Login() {
 						/>
 					</div>
 					<button onClick={handleLogin}>Log in</button>
-				</details>
-                {/* <button onClick={handleLogout}>Log out</button> */}
+				</details>): (
+                  
+                <button onClick={handleLogout}>Log out</button>)}
 			</>
 		);
 }
