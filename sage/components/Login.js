@@ -46,31 +46,31 @@ export default function Login() {
     }
 
     return (
-			<>{!loginStatus ? (
-				<details className='login-details'>
-					<summary className='login-summary'>Login</summary>
-					<div>
-						<label htmlFor='username'>Username:</label>
-						<input
-							type='text'
-							id='username'
-							value={username}
-							onChange={(e) => setUsername(e.target.value)}
-						/>
-					</div>
-					<div>
-						<label htmlFor='password'>password:</label>
-						<input
-							type='text'
-							id='password'
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-						/>
-					</div>
-					<button onClick={handleLogin}>Log in</button>
-				</details>): (
-                  
-                <button onClick={handleLogout}>Log out</button>)}
+			<>
+				<div className='login-container'>
+					{!loginStatus ? (
+						<form className='login-form' onSubmit={handleLogin}>
+							<label htmlFor='username'>Username:</label>
+							<input
+								type='text'
+								id='username'
+								value={username}
+								onChange={(e) => setUsername(e.target.value)}
+							/>
+							<label htmlFor='password'>Password:</label>
+							<input
+								type='password'
+								id='password'
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+							/>
+							<button type='submit'>Log in</button>
+						</form>
+					) : (
+						<button onClick={handleLogout}>Log out</button>
+					)}
+				</div>
+				
 			</>
 		);
 }

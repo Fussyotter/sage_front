@@ -20,7 +20,7 @@ export default function UserMessage() {
 			<details>
 				<summary>Send a message</summary>
 			<form onSubmit={handleSendMessage}>
-				<label htmlFor='receiver'>Recipient:</label>
+				<label htmlFor='receiver'>To:</label>
 				<input
 					type='text'
 					id='receiver'
@@ -29,7 +29,7 @@ export default function UserMessage() {
 				/>
 
 				<label htmlFor='content'>Message:</label>
-				<textarea
+				<input
 					id='content'
 					value={content}
 					onChange={(e) => setContent(e.target.value)}

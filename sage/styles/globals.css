@@ -1,65 +1,79 @@
 :root {
   background-image: url('/backdrop2.png');
   background-size: cover;
-  
+  display:flex;
+  /* align-items:flex-start; */
   
 }
+.big-container{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  /* grid-template-rows:repeat(2,1fr); */
+  align-items:start;
+}
 .header {
-  display:flex;
+  grid-column:1;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content:safe;
+  justify-content: space-between;
   /* padding:10px; */
   /* margin-bottom:-150px; */
 }
 .messageComponents {
-  display:flex;
-  flex-direction:row;
+  /* display:flex; */
+  /* flex-direction:row; */
   align-items: center;
-  /* flex-wrap: wrap; */
-  /* flex-basis:50%; */
-  /* margin-left:20px; */
+
 }
 .nav {
-  display: flex;
-  /* margin-right:auto; */
-  /* flex-basis: 25%; */
-  justify-content: space-around;
-  align-items:center;
+  display: grid;
+  grid-template-columns:repeat(2,1fr);
+  grid-template-rows:repeat(3,1fr);
+  flex-direction: column;
+  /* justify-content:center; */
+  /* align-items:flex-end; */
   background-image: url('/cloud3.png');
   background-size: contain;
   background-repeat: no-repeat;
-  /* background-position-x: -10px center; */
-    /* move image 20px to the right */
-  /* background-position-y: center; */
   position: relative;
   box-sizing: border-box;
   top:-60px;
   left: -50px;
   width: 350px;
   height: 350px;
-  /* padding: 40px; */
   z-index: 1;
   mix-blend-mode: luminosity;
   border-radius: 500px;
 }
-.giftReq{
-  /* margin-top:20px; */
+.signupMove{
+  grid-row:2;
+  grid-column: 1;
+  margin-left:50px;
+  margin-top:0;
   
+}
+.userMessage {
+}
+.giftReq{
   display:flex;
-  position:relative;
-    flex-basis: 50%;
+  grid-column:2;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  /* position:absolute; */
+  /* margin-top:20px; */
+  /* bottom:120px; */
+  /* text-align:center; */
 }
 .gift-params-container{
-  display:flex;
-  position:relative;
-  flex-basis:50%;
-  flex-direction: column;
-  /* align-items:left; */
-  /* justify-content: center; */
+
+  /* display:flex; */
   background-color: #f6e7f7;
   border-radius: 10px;
   padding: 20px;
+  flex-direction: column;
+  /* justify-content: center; */
 
 }
 /* CLOUDS ARE FROM A CODEPEN AS FOLLOWS
@@ -219,6 +233,15 @@ background: #fff;
   box-shadow:2px 2px 6px rgba(0,0,0,0.1);
 
 }
+.loginSignup{
+  display:flex;
+  margin-right:100px;
+  margin-top: 50px;
+  grid-column: 2;
+  grid-row:3;
+  
+  
+}
 .submit-button{
     border: none;
       border-radius: 5px;
@@ -232,11 +255,44 @@ background: #fff;
       transition: all 0.3s ease-in-out;
       cursor: pointer;
 }
+.login-container {
+  display: flex;
+  
+  flex-direction: column;
+  align-items: center;
+}
+.login-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+.login-details>div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.login-details label {
+  margin-right: 10px;
+}
+.login-details input[type="text"] {
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
 
-.login-details{
-font-size: 20px;
-color: rgb(0, 0, 0);}
-
+.login-details button {
+  padding: 5px;
+  margin: 10px;
+  background-color: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
 .submit-button:hover{
   background-color: #dff13a;
 }
@@ -398,23 +454,22 @@ transform: translate(-50%, -50%);
   right: 10px;
   width: 50px;
   height: 50px;
-  background-color: #c9e71b;
+  background-color: #ccc;
   border: none;
   border-radius: 50%;
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 50px;
   text-align: center;
   cursor: pointer;
   z-index: 9998;
-  margin-right:10px;
   /* make sure it's below the sidebar */
 }
 
 /* styles for the table and its contents */
 .ChatDisplay {
   position: fixed;
-  top: 62px;
+  top: 0;
   bottom: 0;
   width: 300px;
   z-index: 1000;
@@ -434,9 +489,7 @@ transform: translate(-50%, -50%);
     overflow: hidden;
     text-overflow: ellipsis;
 }
-table {
-  margin: 0 auto;
-}
+
 .ChatDisplay th {
   background-color: #f7f7f7;
   text-align: left;
