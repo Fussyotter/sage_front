@@ -47,8 +47,8 @@ export default function Login() {
 
     return (
 			<>
-				<details>
-					<summary>Login</summary>
+				<details className='login-details'>
+					<summary className='login-summary'>Login</summary>
 					<div>
 						<label htmlFor='username'>Username:</label>
 						<input

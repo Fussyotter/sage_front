@@ -8,18 +8,21 @@
   display:flex;
   flex-wrap: wrap;
   align-items: flex-start;
+  justify-content: space-between;
   /* padding:10px; */
   /* margin-bottom:-150px; */
 }
 .messageComponents {
   display:flex;
-  flex-wrap: wrap;
-  align-items:flex-start;
-  flex-basis:50%;
-  margin-left:20px;
+  flex-direction:row;
+  align-items: center;
+  /* flex-wrap: wrap; */
+  /* flex-basis:50%; */
+  /* margin-left:20px; */
 }
 .nav {
   display: flex;
+  /* margin-right:auto; */
   /* flex-basis: 50%; */
   justify-content: space-around;
   align-items:center;
@@ -41,16 +44,20 @@
   border-radius: 500px;
 }
 .giftReq{
-  margin-top:20px;
+  /* margin-top:20px; */
+  
+  display:flex;
+  position:relative;
+    flex-basis: 50%;
 }
 .gift-params-container{
-  display:flex;
+  /* display:flex; */
   /* flex-direction: column; */
   align-items:left;
   justify-content: center;
   background-color: #f6e7f7;
   border-radius: 10px;
-  padding: 20px;
+  /* padding: 20px; */
 
 }
 /* CLOUDS ARE FROM A CODEPEN AS FOLLOWS
@@ -66,7 +73,6 @@ had to refactor because of Gradient Errors but I cannot claim the clouds as my o
   z-index: -1;
 }
 
-/* KEYFRAMES */
 
 @-webkit-keyframes animateCloud {
   0% {
@@ -224,6 +230,11 @@ background: #fff;
       transition: all 0.3s ease-in-out;
       cursor: pointer;
 }
+
+.login-details{
+font-size: 20px;
+color: rgb(0, 0, 0);}
+
 .submit-button:hover{
   background-color: #dff13a;
 }
@@ -258,7 +269,7 @@ background: #fff;
 }
 .container.moving {
   position:fixed;
-  animation: slide 10s ease-in-out infinite;
+  animation: slide 5s ease-in-out infinite;
   top:75%;
   left:15%;
     transform: translate(-50%, -50%);
@@ -298,31 +309,31 @@ transform: translate(-50%, -50%);
   }
 
   20% {
-    transform: translate(-50%, -50%) translateY(20vh) translateX(25%) rotate(0deg);
+    transform: translate(-50%, -50%) translateY(20vh) translateX(45%) rotate(0deg);
   }
 
   30% {
-    transform: translate(-50%, -50%) translateY(30vh) translateX(35%) rotate(-45deg);
+    transform: translate(-50%, -50%) translateY(-10vh) translateX(55%) rotate(-45deg);
   }
 
   40% {
-    transform: translate(-50%, -50%) translateY(40vh) translateX(45%) rotate(0deg);
+    transform: translate(-50%, -50%) translateY(40vh) translateX(85%) rotate(0deg);
   }
 
   50% {
-    transform: translate(-50%, -50%) translateY(50vh) translateX(55%) rotate(-45deg);
+    transform: translate(-50%, -50%) translateY(-40vh) translateX(55%) rotate(-45deg);
   }
 
   60% {
-    transform: translate(-50%, -50%) translateY(45vh) translateX(65%) rotate(0deg);
+    transform: translate(-50%, -50%) translateY(-80vh) translateX(95%) rotate(0deg);
   }
 
   70% {
-    transform: translate(-50%, -50%) translateY(35vh) translateX(75%) rotate(-45deg);
+    transform: translate(-50%, -50%) translateY(-50vh) translateX(75%) rotate(-45deg);
   }
 
   80% {
-    transform: translate(-50%, -50%) translateY(25vh) translateX(85%) rotate(0deg);
+    transform: translate(-50%, -50%) translateY(-40vh) translateX(85%) rotate(0deg);
   }
 
   90% {
@@ -381,68 +392,3 @@ transform: translate(-50%, -50%);
 
 
 }
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-    
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
-
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
-  }
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-} */

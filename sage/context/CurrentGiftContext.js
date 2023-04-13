@@ -4,7 +4,8 @@ export const GiftContext = createContext();
 
 export const GiftProvider = ({ children }) => {
 	const [gift, setGift] = useState(null);
-	const [recipient, setRecipient] = useState('');
+
+
 	const [relationship, setRelationship] = useState('');
 	const [interest1, setInterest1] = useState('');
 	const [interest2, setInterest2] = useState('');
@@ -14,8 +15,9 @@ export const GiftProvider = ({ children }) => {
 			value={{
 				gift,
 				setGift,
-				recipient,
-				setRecipient,
+			
+				// recipient,
+				// setRecipient,
 				relationship,
 				setRelationship,
 				interest1,

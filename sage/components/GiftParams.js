@@ -5,6 +5,7 @@ export default function GiftParams() {
 	const {
 		gift,
 		setGift,
+	
 
 		relationship,
 		setRelationship,
@@ -27,7 +28,44 @@ export default function GiftParams() {
 			},
 		});
 		const data = await response.json();
-		setGift(data);
+		console.log(data)
+		setGift(data[0]);
+
+		// setGift1({
+		// 	name: data.choices[0].text,
+		// 	description: '',
+		// 	price: '',
+		// 	link: '',
+		// 	alternativeLink: '',
+		// });
+		// setGift2({
+		// 	name: data.choices[1].text,
+		// 	description: '',
+		// 	price: '',
+		// 	link: '',
+		// 	alternativeLink: '',
+		// });
+		// setGift3({
+		// 	name: data.choices[2].text,
+		// 	description: '',
+		// 	price: '',
+		// 	link: '',
+		// 	alternativeLink: '',
+		// });
+		// setGift4({
+		// 	name: data.choices[3].text,
+		// 	description: '',
+		// 	price: '',
+		// 	link: '',
+		// 	alternativeLink: '',
+		// });
+		// setGift5({
+		// 	name: data.choices[4].text,
+		// 	description: '',
+		// 	price: '',
+		// 	link: '',
+		// 	alternativeLink: '',
+		// });
 	};
 
 	return (
@@ -53,11 +91,11 @@ export default function GiftParams() {
 			<button className='submit-button' onClick={handleClick}>
 				Get Gift Idea
 			</button>
-			{gift && gift.choices && gift.choices[0] && (
+			{/* {gift && gift.choices && gift.choices[0] && (
 				<div className='gift-result-container'>
 					<p className='gift-result-text'>{gift.choices[0].text}</p>
-				</div>
-			)}
+				</div> */}
+			{/* )} */}
 		</div>
 	);
 }

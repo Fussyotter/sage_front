@@ -19,13 +19,13 @@ export default function Home() {
 				<div className='nav'>
 					<Login />
 				</div>
+					<div className='giftReq'>
+						<GiftParams />
+				</div>
 				<div className='messageComponents'>
 					<UserMessage />
 					<ChatDisplay />
-					<div className='giftReq'>
-						<GiftParams />
 					</div>
-				</div>
 			</div>
       {/* need to clean these up in their own component */}
     <div id="background-wrap">
