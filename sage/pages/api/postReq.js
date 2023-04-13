@@ -10,19 +10,13 @@ export default function handler(req, res) {
 		return res.status(400).json({ message: 'Only POST requests allowed' });
 	}
 	const {
+		recipient = '',
 		relationship = '',
 		interest1 = '',
 		interest2 = '',
 	} = req.body;
 
-	const prompt = `Can I have one gift idea for my ${relationship} they like ${interest1}.  Please respond with a JSON object that has the following properties:
-- "GiftName": a string representing the name of the gift
-- "Description": a string representing the description of the gift
-- "Price": a string representing the estimated price of the gift
-- "Link": a string representing a link to a homepage with suggestions for similar gifts
-- "AlternativeLink": a string representing a link to a homepage of an alternative website with suggestions for similar gifts
-
-`;
+	const prompt = `Give me a gift idea for "${recipient}", they are my "${relationship}" and they like "${interest1}" and "${interest2}".  Limit the response to 5 items, and can I please have links to these items.`;
 
 	corsMiddleware(req, res, async () => {
 		try {
@@ -41,16 +35,6 @@ export default function handler(req, res) {
 				}),
 			});
 			const data = await response.json();
-			console.log(data)
-			await fetch('http://localhost:8000/gifts/', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: 'Token d7a62d3afe9c68727989cf8c615978a2eeb3f074',
-				},
-				body: JSON.stringify(data.choices[0].text),
-			});
-			console.log
 			res.status(200).json(data);
 		} catch (error) {
 			console.error(error);

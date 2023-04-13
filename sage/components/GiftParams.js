@@ -16,7 +16,7 @@ export default function GiftParams() {
 	} = useContext(GiftContext);
 
 	useEffect(() => {
-		console.log(gift);
+		// console.log(gift);
 	}, [gift]);
 
 	const handleClick = async () => {
@@ -28,9 +28,11 @@ export default function GiftParams() {
 			},
 		});
 		const data = await response.text();
-		const json= JSON.parse(data.trim());
-		console.log(json)
-		setGift(json[0]);
+		const trimmedResponse = data.trim();
+const formattedResponse = trimmedResponse.replace(/\n\n\d+\.\s|\\n\\n\d+\\./g, '');
+		const json = JSON.parse(formattedResponse);
+		console.log(json);
+		setGift(json.choices[0].text);
 
 
 	};
@@ -58,6 +60,12 @@ export default function GiftParams() {
 			<button className='submit-button' onClick={handleClick}>
 				Get Gift Idea
 			</button>
+			  {gift && (
+      <div>
+        <p>Your gift idea:</p>
+        <p>{gift}</p>
+      </div>
+			  )}
 		</div>
 	);
 }
