@@ -12,11 +12,10 @@ export default function handler(req, res) {
 	const {
 		recipient = '',
 		relationship = '',
-		interest1 = '',
-		interest2 = '',
+		interest = '',
 	} = req.body;
 
-	const prompt = `Give me a gift idea for "${recipient}", they are my "${relationship}" and they like "${interest1}" and "${interest2}".  Limit the response to 5 items.  Can I have the names of the 5 items in an html list, and can I have the links to these 5 items in another html list following the first. Can I also have the response in magical tone with line breaks after each sentence.`;
+	const prompt = `Give me a gift idea for "${recipient}", they are my "${relationship}" and they like "${interest}".  Limit the response to 5 items.  Can I have the names of the 5 items in an html list, and can I have the links to these 5 items in another html list following the first. Can I also have the response in magical tone with line breaks after each sentence.`;
 
 	corsMiddleware(req, res, async () => {
 		try {

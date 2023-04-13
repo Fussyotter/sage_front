@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { GiftContext } from '@/context/CurrentGiftContext';
+import { BackgroundContext } from '@/context/BackgroundContext';
 
 export default function GiftParams() {
 	const {
@@ -9,37 +10,42 @@ export default function GiftParams() {
 
 		relationship,
 		setRelationship,
-		interest1,
-		setInterest1,
-		interest2,
-		setInterest2,
+		interest,
+		setInterest,
+
 	} = useContext(GiftContext);
+	const [moving, setMoving] = useContext(BackgroundContext);
+
 
 	useEffect(() => {
 		// console.log(gift);
 	}, [gift]);
 
 	const handleClick = async () => {
+		setMoving((prevMoving) => !prevMoving);
 		const response = await fetch('/api/postReq', {
 			method: 'POST',
-			body: JSON.stringify({ relationship, interest1, interest2 }),
+			body: JSON.stringify({ relationship, interest, }),
 			headers: {
 				'Content-Type': 'application/json',
 			},
 		});
 		const data = await response.text();
 		const trimmedResponse = data.trim();
-const formattedResponse = trimmedResponse.replace(/\n\n(\d+\.\s)/g, '\n\n$1');
+		const formattedResponse = trimmedResponse.replace(/\n\n(\d+\.\s)/g, '\n\n$1');
 
 		const json = JSON.parse(formattedResponse);
 		console.log(json);
 		setGift(json.choices[0].text);
+		setMoving((prevMoving) => !prevMoving);
+
 
 
 	};
 
 	return (
 		<div className='gift-params-container'>
+			<h1>Test </h1>
 			<input
 				className='input-field'
 				value={relationship}
@@ -48,16 +54,11 @@ const formattedResponse = trimmedResponse.replace(/\n\n(\d+\.\s)/g, '\n\n$1');
 			/>
 			<input
 				className='input-field'
-				value={interest1}
-				onChange={(e) => setInterest1(e.target.value)}
+				value={interest}
+				onChange={(e) => setInterest(e.target.value)}
 				placeholder='Interest 1'
 			/>
-			<input
-				className='input-field'
-				value={interest2}
-				onChange={(e) => setInterest2(e.target.value)}
-				placeholder='Interest 2'
-			/>
+			
 			<button className='submit-button' onClick={handleClick}>
 				Get Gift Idea
 			</button>
@@ -81,13 +82,13 @@ const formattedResponse = trimmedResponse.replace(/\n\n(\d+\.\s)/g, '\n\n$1');
 // 	const [gift, setGift] = useState('');
 // 	const [recipient, setRecipient] = useState('');
 // 	const [relationship, setRelationship] = useState('');
-// 	const [interest1, setInterest1] = useState('');
+// 	const [interest, setInterest] = useState('');
 // 	const [interest2, setInterest2] = useState('');
 
 // 	const handleClick = async () => {
 // 		const response = await fetch('/api/postReq', {
 // 			method: 'POST',
-// 			body: JSON.stringify({ recipient, relationship, interest1, interest2 }),
+// 			body: JSON.stringify({ recipient, relationship, interest, interest2 }),
 // 			headers: {
 // 				'Content-Type': 'application/json',
 // 			},
@@ -110,8 +111,8 @@ const formattedResponse = trimmedResponse.replace(/\n\n(\d+\.\s)/g, '\n\n$1');
 // 				placeholder='Relationship'
 // 			/>
 // 			<input
-// 				value={interest1}
-// 				onChange={(e) => setInterest1(e.target.value)}
+// 				value={interest}
+// 				onChange={(e) => setInterest(e.target.value)}
 // 				placeholder='Interest 1'
 // 			/>
 // 			<input

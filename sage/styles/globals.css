@@ -8,7 +8,7 @@
   display:flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content:safe;
   /* padding:10px; */
   /* margin-bottom:-150px; */
 }
@@ -23,7 +23,7 @@
 .nav {
   display: flex;
   /* margin-right:auto; */
-  /* flex-basis: 50%; */
+  /* flex-basis: 25%; */
   justify-content: space-around;
   align-items:center;
   background-image: url('/cloud3.png');
@@ -51,13 +51,15 @@
     flex-basis: 50%;
 }
 .gift-params-container{
-  /* display:flex; */
-  /* flex-direction: column; */
-  align-items:left;
-  justify-content: center;
+  display:flex;
+  position:relative;
+  /* flex-basis:50%; */
+  flex-direction: column;
+  /* align-items:left; */
+  /* justify-content: center; */
   background-color: #f6e7f7;
   border-radius: 10px;
-  /* padding: 20px; */
+  padding: 20px;
 
 }
 /* CLOUDS ARE FROM A CODEPEN AS FOLLOWS
@@ -252,7 +254,7 @@ color: rgb(0, 0, 0);}
 
 }
 .container { 
-  position:relative;
+  position:absolute;
   height: 50vh;
   width:50vh;
   padding:0;
@@ -269,7 +271,7 @@ color: rgb(0, 0, 0);}
 }
 .container.moving {
   position:fixed;
-  animation: slide 5s ease-in-out infinite;
+  animation: slide 10s ease-in-out infinite;
   top:75%;
   left:15%;
     transform: translate(-50%, -50%);
@@ -301,48 +303,23 @@ transform: translate(-50%, -50%);
 /*  trying to make my handsome wizard do a lazy arc across the screen */
 @keyframes slide {
   0% {
-    transform: translate(-50%, -50%) translateY(0) translateX(0) rotate(0deg);
+    transform: translate(-50%, -50%) translateX(0) translateY(0%);
   }
 
-  10% {
-    transform: translate(-50%, -50%) translateY(10vh) translateX(15%) rotate(-45deg);
-  }
-
-  20% {
-    transform: translate(-50%, -50%) translateY(20vh) translateX(45%) rotate(0deg);
-  }
-
-  30% {
-    transform: translate(-50%, -50%) translateY(-10vh) translateX(55%) rotate(-45deg);
-  }
-
-  40% {
-    transform: translate(-50%, -50%) translateY(40vh) translateX(85%) rotate(0deg);
+  25% {
+    transform: translate(-50%, -50%) translateX(-20%) translateY(20%);
   }
 
   50% {
-    transform: translate(-50%, -50%) translateY(-40vh) translateX(55%) rotate(-45deg);
+    transform: translate(-50%, -50%) translateX(10%) translateY(-40%);
   }
 
-  60% {
-    transform: translate(-50%, -50%) translateY(-80vh) translateX(95%) rotate(0deg);
+  75% {
+    transform: translate(-50%, -50%) translateX(400%) translateY(-100%);
   }
-
-  70% {
-    transform: translate(-50%, -50%) translateY(-50vh) translateX(75%) rotate(-45deg);
-  }
-
-  80% {
-    transform: translate(-50%, -50%) translateY(-40vh) translateX(85%) rotate(0deg);
-  }
-
-  90% {
-    transform: translate(-50%, -50%) translateY(15vh) translateX(95%) rotate(-45deg);
-  }
-
 
   100% {
-    transform: translate(-50%, -50%) translateY(0) translateX(100%) rotate(0deg);
+    transform: translate(-50%, -50%) translateX(0) translateY(0%);
   }
 }
 .background {
@@ -391,4 +368,98 @@ transform: translate(-50%, -50%);
   }
 
 
+}
+/* messages */
+/* styles for the ChatDisplay component */
+.ChatDisplay {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  /* start offscreen */
+  width: 300px;
+  height: 100vh;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  transition: right 0.3s ease-in-out;
+  /* animate the slide-in */
+  z-index: 9999;
+  /* make sure it's on top of other elements */
+}
+
+.ChatDisplay--open {
+  right: 0;
+  /* slide in */
+}
+
+/* styles for the button that toggles the sidebar */
+.ChatDisplay__toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: #c9e71b;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 18px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 9998;
+  margin-right:10px;
+  /* make sure it's below the sidebar */
+}
+
+/* styles for the table and its contents */
+.ChatDisplay {
+  position: fixed;
+  top: 62px;
+  bottom: 0;
+  width: 300px;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.ChatDisplay table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ChatDisplay th,
+.ChatDisplay td {
+  padding: 0.5rem;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+table {
+  margin: 0 auto;
+}
+.ChatDisplay th {
+  background-color: #f7f7f7;
+  text-align: left;
+  font-weight: bold;
+}
+
+.ChatDisplay td:nth-child(2) {
+  text-align: center;
+}
+.chat-container {
+  display: flex;
+  align-items: center;
+}
+.ChatDisplay button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #333;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+.ChatDisplay__scroll {
+  height: 100vh;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
 }

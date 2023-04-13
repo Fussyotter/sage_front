@@ -7,8 +7,7 @@ export const GiftProvider = ({ children }) => {
 
 
 	const [relationship, setRelationship] = useState('');
-	const [interest1, setInterest1] = useState('');
-	const [interest2, setInterest2] = useState('');
+	const [interest, setInterest] = useState('');
 
 	return (
 		<GiftContext.Provider
@@ -20,10 +19,9 @@ export const GiftProvider = ({ children }) => {
 				// setRecipient,
 				relationship,
 				setRelationship,
-				interest1,
-				setInterest1,
-				interest2,
-				setInterest2,
+				interest,
+				setInterest,
+				
 			}}>
 			{children}
 		</GiftContext.Provider>
