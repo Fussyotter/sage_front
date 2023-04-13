@@ -29,7 +29,8 @@ export default function GiftParams() {
 		});
 		const data = await response.text();
 		const trimmedResponse = data.trim();
-const formattedResponse = trimmedResponse.replace(/\n\n\d+\.\s|\\n\\n\d+\\./g, '');
+const formattedResponse = trimmedResponse.replace(/\n\n(\d+\.\s)/g, '\n\n$1');
+
 		const json = JSON.parse(formattedResponse);
 		console.log(json);
 		setGift(json.choices[0].text);
@@ -60,12 +61,12 @@ const formattedResponse = trimmedResponse.replace(/\n\n\d+\.\s|\\n\\n\d+\\./g, '
 			<button className='submit-button' onClick={handleClick}>
 				Get Gift Idea
 			</button>
-			  {gift && (
-      <div>
-        <p>Your gift idea:</p>
-        <p>{gift}</p>
-      </div>
-			  )}
+			{gift && (
+				<div>
+					<p>Your gift idea:</p>
+					<div dangerouslySetInnerHTML={{ __html: gift }}></div>
+				</div>
+			)}
 		</div>
 	);
 }
