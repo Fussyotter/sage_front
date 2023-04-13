@@ -5,6 +5,7 @@ import GiftParams from '@/components/GiftParams';
 import Login from '@/components/Login';
 import UserMessage from '@/components/UserToUserMessage';
 import Background from '@/components/Background';
+import Signup from '@/components/Signup';
 import axios from 'axios';
 import Cors from 'cors';
 
@@ -15,6 +16,7 @@ export default function Home() {
 				<div className='nav'>
 					<Login />
 				</div>
+                <Signup/>
 				<div className='giftReq'>
 					<GiftParams />
 				</div>
