@@ -49,6 +49,33 @@ export async function messageRead(loggedInUser, message_id) {
 
 	})
 }
+export async function messageDelete(loggedInUser, message_id) {
+	const headersWithContentType = {
+		...headers,
+		'Content-Type': 'application/json',
+	};
+
+	try {
+		const response = await fetch(
+			`http://localhost:8000/messages/${message_id}`,
+			{
+				method: 'DELETE',
+				headers: headersWithContentType,
+			}
+		);
+
+		if (!response.ok) {
+			const error = await response.json();
+			throw new Error(error.detail);
+		}
+
+		return true; // or you can return any data you want
+	} catch (error) {
+		console.error(error);
+		return false; // or you can return any data you want
+	}
+}
+
 
 // user to user messaging
 export async function userToUserMessage(receiver, content) {
