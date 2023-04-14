@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { userToUserMessage } from '@/pages/api/messageFunc';
 
-export default function UserMessage() {
+export default function UserMessage(props) {
 	const [receiver, setReceiver] = useState('');
 	const [content, setContent] = useState('');
 
@@ -10,15 +10,17 @@ export default function UserMessage() {
 		try {
 			const data = await userToUserMessage(receiver, content);
 			console.log(data);
+			setReceiver('');
+			setContent('');
+			props.onUpdate();
 		} catch (error) {
 			console.error('failed to send message:', error);
 		}
 	};
 
 	return (
-		<div>
-			<details>
-				<summary>Send a message</summary>
+		<div className='UserMessage'>
+			<h3>Send a message</h3>
 			<form onSubmit={handleSendMessage}>
 				<label htmlFor='receiver'>To:</label>
 				<input
@@ -27,6 +29,7 @@ export default function UserMessage() {
 					value={receiver}
 					onChange={(e) => setReceiver(e.target.value)}
 				/>
+				<br></br>
 
 				<label htmlFor='content'>Message:</label>
 				<input
@@ -37,7 +40,6 @@ export default function UserMessage() {
 
 				<button type='submit'>Send Message</button>
 			</form>
-		</details>
 		</div>
 	);
 }

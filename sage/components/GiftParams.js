@@ -17,6 +17,7 @@ export default function GiftParams() {
 	} = useContext(GiftContext);
 	const [moving, setMoving] = useContext(BackgroundContext);
 	const [loggedInUser] = useContext(UserContext)
+	
 
 
 	useEffect(() => {
@@ -58,7 +59,7 @@ export default function GiftParams() {
 				className='input-field'
 				value={interest}
 				onChange={(e) => setInterest(e.target.value)}
-				placeholder='Interest 1'
+				placeholder='Interest'
 			/>
 			
 			<button className='submit-button' onClick={handleClick}>
