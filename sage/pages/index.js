@@ -30,9 +30,7 @@ export default function Home() {
 				<div className='giftReq'>
 					<GiftParams />
 				</div>
-				{/* <div className='userMessage'>
-					<UserMessage />
-				</div> */}
+			
 			</div>
 			{/* need to clean these up in their own component */}
 			<div id='background-wrap'>
