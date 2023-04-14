@@ -4,7 +4,10 @@ import axios from 'axios';
 export default function Signup () {
     const signupNewUser = async (userData) => {
         try {
-            const response = await axios.post('http://localhost:8000/v1/users/',userData);
+            const response = await axios.post(
+							'http://https://sage-backend.onrender.com/v1/users/',
+							userData
+						);
             return response.data;
         } catch (error) {
             if(error.response) {

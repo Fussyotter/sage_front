@@ -15,7 +15,7 @@ export const login = async (userData) => {
 		console.log('Logging in with data:', userData);
 
 		const response = await axios.post(
-			'http://localhost:8000/v1/token/login',
+			'https://sage-backend.onrender.com/v1/token/login',
 			userData
 		);
 		console.log('Login response:', response.data);
@@ -36,7 +36,7 @@ export const login = async (userData) => {
 
 export const getCurrentUser = async () => {
 	try {
-		const response = await axios.get('http://localhost:8000/v1/users/me');
+		const response = await axios.get('https://sage-backend.onrender.com/v1/users/me');
 		const user = {
 			username: response.data.username,
 		};
@@ -70,7 +70,7 @@ export const unsetCurrentUser = () => {
 // logout
 export const logout = async () => {
 	try {
-		await axios.post('http://localhost:8000/v1/token/logout/');
+		await axios.post('https://sage-backend.onrender.com/v1/token/logout/');
 		unsetCurrentUser();
 		console.log('logout success');
 	} catch (error) {

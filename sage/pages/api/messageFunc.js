@@ -21,7 +21,7 @@ if (typeof window !== 'undefined') {
 
 // show all messages sent and received
 export async function fetchChat(loggedInUser) {
-	const response = await fetch(`http://localhost:8000/chat/${loggedInUser}/`, {
+	const response = await fetch(`https://sage-backend.onrender.com/chat/${loggedInUser}/`, {
 		headers,
 	});
 	const data = await response.json();
@@ -30,7 +30,7 @@ export async function fetchChat(loggedInUser) {
 // test to send chat to specific user.  needs to be modified or removed now that everything is working
 export async function chatTest(loggedInUser) {
 	const headersWithContentType = { ...headers, 'Content-Type': 'application/json' }
-	const response = await fetch(`http://localhost:8000/chat/chattwo/`, {
+	const response = await fetch(`https://sage-backend.onrender.com/chat/chattwo/`, {
 		method: 'POST',
 		headers: headersWithContentType,
 		body: JSON.stringify({ content: 'bigtest' }),
@@ -42,7 +42,7 @@ export async function chatTest(loggedInUser) {
 // update message to read / unread
 export async function messageRead(loggedInUser, message_id) {
 	const headersWithContentType = { ...headers, 'Content-Type': 'application/json' }
-	const response = await fetch(`http://localhost:8000/messages/${message_id}/seen/`, {
+	const response = await fetch(`https://sage-backend.onrender.com/messages/${message_id}/seen/`, {
 		method: 'PATCH',
 		headers: headersWithContentType,
 		body: JSON.stringify({"is_seen": true}),
@@ -57,7 +57,7 @@ export async function messageDelete(loggedInUser, message_id) {
 
 	try {
 		const response = await fetch(
-			`http://localhost:8000/messages/${message_id}`,
+			`https://sage-backend.onrender.com/messages/${message_id}`,
 			{
 				method: 'DELETE',
 				headers: headersWithContentType,
@@ -85,7 +85,7 @@ export async function userToUserMessage(receiver, content) {
 	};
 	console.log(headers)
 
-	const response = await fetch(`http://localhost:8000/chat/${receiver}/`, {
+	const response = await fetch(`https://sage-backend.onrender.com/chat/${receiver}/`, {
 		method: 'POST',
 		headers: headersWithContentType,
 		body: JSON.stringify({ content }),
