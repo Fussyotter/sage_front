@@ -5,7 +5,7 @@ export default function Signup() {
 	const signupNewUser = async (userData) => {
 		try {
 			const response = await axios.post(
-				'http://https://sage-backend.onrender.com/v1/users/',
+				'https://sage-backend.onrender.com/v1/users/',
 				userData
 			);
 			return response.data;
