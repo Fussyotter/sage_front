@@ -36,7 +36,7 @@ export const login = async (userData) => {
 
 export const getCurrentUser = async () => {
 	try {
-		const response = await axios.get('https://sage-backend.onrender.com/v1/users/me');
+		const response = await axios.get('https://sage-backend.onrender.com/v1/users/me/');
 		const user = {
 			username: response.data.username,
 		};
