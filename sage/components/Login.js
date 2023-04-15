@@ -18,25 +18,27 @@ export default function Login() {
 				password: password,
 			});
 			setLoggedInUser(user.username);
-            setUser(user)
+
+			setUser(user);
 			setLoginStatus(true);
 		} catch (error) {
 			console.error('login failed:', error);
 			setLoginStatus(false);
+			setUser(null);
 		}
 	};
-
 	const handleLogout = async () => {
 		try {
 			await logout();
 			console.log('logout successful');
 			setLoggedInUser(null);
+
 			setLoginStatus(false);
-            setUser(null)
+			setUser(null);
 		} catch (error) {
 			console.error('logout failed', error);
 			setLoginStatus(false);
-            setUser(null)
+			setUser(null);
 		}
 	};
 
