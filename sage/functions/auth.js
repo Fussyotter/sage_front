@@ -15,7 +15,7 @@ export const login = async (userData) => {
 		console.log('Logging in with data:', userData);
 
 		const response = await axios.post(
-			'https://sage-backend.onrender.com/v1/token/login',
+			'https://sage-backend.onrender.com/v1/token/login/',
 			userData
 		);
 		console.log('Login response:', response.data);
