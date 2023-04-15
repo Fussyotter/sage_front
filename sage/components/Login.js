@@ -6,6 +6,8 @@ export default function Login() {
 	const [loginStatus, setLoginStatus] = useState(false);
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+        const [user, setUser] = useState(null);
+
 	const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
 	const handleLogin = async (e) => {
@@ -16,7 +18,7 @@ export default function Login() {
 				password: password,
 			});
 			setLoggedInUser(user.username);
-            
+            setUser(user)
 			setLoginStatus(true);
 		} catch (error) {
 			console.error('login failed:', error);
@@ -30,9 +32,11 @@ export default function Login() {
 			console.log('logout successful');
 			setLoggedInUser(null);
 			setLoginStatus(false);
+            setUser(null)
 		} catch (error) {
 			console.error('logout failed', error);
 			setLoginStatus(false);
+            setUser(null)
 		}
 	};
 
