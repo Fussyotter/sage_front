@@ -6,7 +6,7 @@ export default function Login() {
 	const [loginStatus, setLoginStatus] = useState(false);
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
-        const [user, setUser] = useState(null);
+	const [user, setUser] = useState(null);
 
 	const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
@@ -43,7 +43,11 @@ export default function Login() {
 	};
 
 	const LoginButton = () => {
-		return <button className='login-button'onClick={() => setLoginStatus(true)}>Log in</button>;
+		return (
+			<button className='login-button' onClick={() => setLoginStatus(true)}>
+				Log in
+			</button>
+		);
 	};
 
 	const LoginForm = () => {
@@ -63,15 +67,27 @@ export default function Login() {
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 				/>
-				<button type='submit'>Log in</button>
+				<button className='login-button' type='submit'>
+					Log in
+				</button>
 			</form>
 		);
 	};
 
 	return (
 		<div className='login-container'>
-			{loginStatus ? <LoginForm /> : <LoginButton />}
-			{loginStatus && <button onClick={handleLogout}>Log out</button>}
+			{loggedInUser ? (
+				<div>Welcome {loggedInUser}!</div>
+			) : loginStatus ? (
+				<LoginForm />
+			) : (
+				<LoginButton />
+			)}
+			{loggedInUser && (
+				<button className='login-button' onClick={handleLogout}>
+					Log out
+				</button>
+			)}
 
 			<style>{`
                 input {

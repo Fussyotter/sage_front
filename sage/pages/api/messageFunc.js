@@ -57,7 +57,7 @@ export async function messageDelete(loggedInUser, message_id) {
 
 	try {
 		const response = await fetch(
-			`https://sage-backend.onrender.com/messages/${message_id}`,
+			`https://sage-backend.onrender.com/messages/${message_id}/`,
 			{
 				method: 'DELETE',
 				headers: headersWithContentType,
