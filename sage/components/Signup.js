@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export default function Signup () {
-    const signupNewUser = async (userData) => {
-        try {
-            const response = await axios.post(
-							'http://https://sage-backend.onrender.com/v1/users/',
-							userData
-						);
-            return response.data;
-        } catch (error) {
-            if(error.response) {
-                throw new Error(JSON.stringify(error.response.data));
-            } else if (error.message) {
-                throw new Error(JSON.stringify(error.message));
-            } else {
-                throw new Error(JSON.stringify(error));
-            }
-        }
-    }
+export default function Signup() {
+	const signupNewUser = async (userData) => {
+		try {
+			const response = await axios.post(
+				'https://sage-backend.onrender.com/v1/users/',
+				userData
+			);
+			return response.data;
+		} catch (error) {
+			if (error.response) {
+				throw new Error(JSON.stringify(error.response.data));
+			} else if (error.message) {
+				throw new Error(JSON.stringify(error.message));
+			} else {
+				throw new Error(JSON.stringify(error));
+			}
+		}
+	};
 	const [formData, setFormData] = useState({
 		username: '',
 		password: '',
@@ -32,6 +32,8 @@ export default function Signup () {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 
+	const [showForm, setShowForm] = useState(false);
+
 	const onSignupClick = async () => {
 		try {
 			const userData = {
@@ -41,15 +43,19 @@ export default function Signup () {
 			const response = await signupNewUser(userData);
 			console.log(response); // handle successful response
 		} catch (err) {
-			setFormErrors({ ...formErrors, [`${err.field}Error`]: err.message });
+			setFormErrors({
+				...formErrors,
+				[`${err.field}Error`]: err.message,
+			});
 			console.error(err); // handle error
 		}
 	};
 
 	return (
-		<div>
-			<details>
-				<summary>Sign up</summary>
+		<>
+			{!showForm ? (
+				<button className='signup-button'onClick={() => setShowForm(true)}>Sign up</button>
+			) : (
 				<form>
 					<div>
 						<label htmlFor='usernameId'>User name</label>
@@ -76,14 +82,10 @@ export default function Signup () {
 						/>
 						<div className='invalid-feedback'>{formErrors.passwordError}</div>
 					</div>
+					<button className='signup-button'onClick={onSignupClick}>Sign up</button>
+					<button onClick={() => setShowForm(false)}>x</button>
 				</form>
-				<button onClick={onSignupClick}>Sign up</button>
-			</details>
-			{/* <h1></h1> */}
-
-			{/* <p className='mt-2'>
-				Already have account? <a href='/login'>Login</a>
-			</p> */}
-		</div>
+			)}
+		</>
 	);
-};
+}
