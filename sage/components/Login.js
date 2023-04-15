@@ -16,6 +16,7 @@ export default function Login() {
 				password: password,
 			});
 			setLoggedInUser(user.username);
+            
 			setLoginStatus(true);
 		} catch (error) {
 			console.error('login failed:', error);
