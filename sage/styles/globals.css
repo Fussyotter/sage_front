@@ -1,20 +1,25 @@
 :root {
   background-image: url('/backdrop2.png');
   background-size: cover;
-  display:flex;
+  display:grid;
+  /* display:flex; */
   /* align-items:flex-start; */
   font-family: 'Roboto', sans-serif;}
 .big-container{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  /* grid-template-rows:repeat(2,1fr); */
+  grid-template-rows:repeat(2,1fr);
   align-items:start;
 }
+.result {
+
+}
 .header {
-  grid-column:1;
+  /* grid-column:1; */
+  
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   /* padding:10px; */
   /* margin-bottom:-150px; */
 }
@@ -37,19 +42,23 @@
   z-index: -1;
   mix-blend-mode: luminosity;
   border-radius: 500px;
+  
 
 }
 .nav {
   /* top: -500px; */
   /* left: 290px; */
-  top: -155px;
-  position: relative;
+  top: 225px;
+/* left:200px; */
+width:300px;
+position: absolute;
   display: grid;
  justify-content: left;
+ /* margin-right:1000px; */
   /* flex-direction: column; */
   /* grid-template-columns:2; */
-  margin: 0 auto;
-  
+  margin: 0;
+  grid-row:1;
   grid-template-rows:2;
 
 }
@@ -72,8 +81,23 @@
   margin: 0 auto;
  
   grid-row: 1;
-
-
+  
+}
+.gift-result{
+    position: relative;
+    /* align-content:center; */
+    margin:0 auto;
+    top:-340px;
+    /* position:absolute; */
+        
+    background-color: #f2e7e7;
+      border-radius: 5px;
+      box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+      /* flex-direction: column; */
+      /* margin: 1rem; */
+      max-width: 400px;
+      /* overflow: hidden; */
+      padding: 1rem;
 }
 .login-container {
   margin: 0 auto;
@@ -86,23 +110,27 @@
 .userMessage {
 }
 .giftReq{
-  display:flex;
-  grid-column:2;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
+  position:relative;
+  grid-column:1;
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin-left:350px;
+  /* margin: 0 auto; */
   /* position:absolute; */
   /* margin-top:20px; */
   /* bottom:120px; */
-  /* text-align:center; */
+  text-align:center;
 }
 .gift-params-container{
 
-  /* display:flex; */
+  position:relative;
+  /* grid-column:2; */
   background-color: #f6e7f7;
   border-radius: 10px;
   padding: 20px;
+  bottom:350px;
+  margin-left:330px;
+  align-items: center;
   flex-direction: column;
   /* justify-content: center; */
 
@@ -295,11 +323,11 @@ background: #fff;
   margin-right: 10px;
 }
 .login-details input[type="text"] {
-  padding: 5px;
+  /* padding: 5px;
   margin: 5px;
   width: 200px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 3px; */
 }
 
 .login-details button {
@@ -314,13 +342,13 @@ background: #fff;
 .submit-button:hover{
   background-color: #dff13a;
 }
-.gift-result-container{
+/* .gift-result-container{
   margin-top: 20px;
   background-color: #ff39ec;
   border-radius: 10px;
   padding:20px;
   text-align:center;
-}
+} */
 .gift-result-text{
   font-family: 'Lobster', cursive;
   font-size: 24px;
@@ -356,7 +384,7 @@ background: #fff;
 position: fixed;
 top: 75%;
 left: 15%;
-transform: translate(-50%, -50%);
+  animation: slide-fixed 20s ease-in-out;transform: translate(-50%, -50%);
 }
 .container.fixed .overlay {
   animation: none;
@@ -375,6 +403,19 @@ transform: translate(-50%, -50%);
 } */
 
 /*  trying to make my handsome wizard do a lazy arc across the screen */
+@keyframes slide-fixed {
+  0% {
+    transform: translate(-50%, -50%) translateX(0) translateY(0%);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translateX(50%) translateY(-20%);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) translateX(0) translateY(0%);
+  }
+}
 @keyframes slide {
   0% {
     transform: translate(-50%, -50%) translateX(0) translateY(0%);
@@ -433,8 +474,8 @@ transform: translate(-50%, -50%);
 }
 
 #typed-text {
-  color: red;
-  font-weight: bold;
+  color: rgb(12, 12, 11);
+  font-family:monospace;
 }
 @media (max-width: 768px) {
   .background {
@@ -448,11 +489,11 @@ transform: translate(-50%, -50%);
 .ChatDisplay {
   /* position: fixed; */
   top: 0;
-  right: -300px;
+  right: -100px;
   /* start offscreen */
   /* width: 0px; */
   height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #c0bfbf;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   transition: right 0.3s ease-in-out;
   /* animate the slide-in */
@@ -460,11 +501,13 @@ transform: translate(-50%, -50%);
   /* make sure it's on top of other elements */
 }
 .ChatDisplay__overlay {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   }
 .ChatDisplay--open {
   right: 0;
+  /* height:100vh; */
+  /* position:relative; */
   /* slide in */
 }
 
@@ -475,11 +518,11 @@ transform: translate(-50%, -50%);
   right: 10px;
   width: 50px;
   height: 50px;
-  background-color: transparent;
+  background-color: purple;
   border: none;
   border-radius: 50%;
   color: #fff;
-  font-size: 20px;
+  font-size: 15px;
   line-height: 50px;
   text-align: center;
   cursor: pointer;
@@ -493,6 +536,7 @@ transform: translate(-50%, -50%);
   top: 0;
   /* bottom: 0; */
   width: 400px;
+  margin:0 auto;
   z-index: 1000;
   background-color: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -542,7 +586,11 @@ transform: translate(-50%, -50%);
   cursor: pointer;
 }
 .ChatDisplay__scroll {
-  height: 100vh;
+  height: 50vh;
   overflow-y: auto;
   overscroll-behavior-y: contain;
 }
+/* .gift-result-wrapper{
+ position:absolute;
+ align-content: center;
+} */

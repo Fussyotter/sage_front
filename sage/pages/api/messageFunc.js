@@ -24,6 +24,7 @@ export async function fetchChat(loggedInUser) {
 	const response = await fetch(`https://sage-backend.onrender.com/chat/${loggedInUser}/`, {
 		headers,
 	});
+	console.log(headers)
 	const data = await response.json();
 	return data;
 }

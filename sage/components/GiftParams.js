@@ -17,6 +17,8 @@ export default function GiftParams() {
 	} = useContext(GiftContext);
 	const [moving, setMoving] = useContext(BackgroundContext);
 	const [loggedInUser] = useContext(UserContext)
+	const [displayedGift, setDisplayedGift] = useState('');
+
 	
 
 
@@ -48,29 +50,29 @@ export default function GiftParams() {
 
 	return (
 		<div className='gift-params-container'>
-			{loggedInUser ? ( <h1>TELL THE WIZARD THE RELATIONSHIP YOU HAVE WITH THE RECIPIENT OF THE GIFT! AND ALSO WHAT THEY ARE INTERESTED IN! NO MORE BECAUSE IT COULD TIRE THE WIZARD OUT TO HEAR MORE FROM YOU {loggedInUser}</h1>):(<h1> YOU MUST LOG IN TO CONSULT THE WIZARD</h1>) }
+			{loggedInUser ? ( <h1> Consult the Wizard...for gift advice.</h1>):(<h1> Consult the all powerful wizard for gift ideas. </h1>) }
 			<input
 				className='input-field'
 				value={relationship}
 				onChange={(e) => setRelationship(e.target.value)}
-				placeholder='Relationship'
+				placeholder='Who?'
 			/>
 			<input
 				className='input-field'
 				value={interest}
 				onChange={(e) => setInterest(e.target.value)}
-				placeholder='Interest'
+				placeholder='What do they like?'
 			/>
 			
 			<button className='submit-button' onClick={handleClick}>
 				Get Gift Idea
 			</button>
-			{gift && (
-				<div>
+			{/* {gift && (
+				<div className="gift-result-wrapper">
 					<p>Your gift idea:</p>
-					<div dangerouslySetInnerHTML={{ __html: gift }}></div>
-				</div>
-			)}
+					<div className='gift-result'dangerouslySetInnerHTML={{ __html: gift }}></div>
+				</div> */}
+			{/* )} */}
 		</div>
 	);
 }

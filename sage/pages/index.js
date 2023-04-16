@@ -6,15 +6,21 @@ import Login from '@/components/Login';
 import UserMessage from '@/components/UserToUserMessage';
 import Background from '@/components/Background';
 import Signup from '@/components/Signup';
+import GiftResult from '@/components/GiftResult';
 import axios from 'axios';
 import Cors from 'cors';
 
 export default function Home() {
 	return (
 		<>
-			<div className='big-container'>
+			{/* <div className='big-container'> */}
 				<div className='header'>
 					<div className='cloudImage'></div>
+						<GiftParams />
+						<GiftResult/>
+					</div>
+				
+						<ChatDisplay />
 					<div className='nav'>
 						<div className='loginSignup'>
 							<Login />
@@ -22,14 +28,11 @@ export default function Home() {
 						<div className='signupMove'>
 							<Signup />
 						</div>
+					<div className='result'>
+			{/* <GiftParams/> */}
+
 					</div>
-					<div className='messageComponents'>
-						<ChatDisplay />
-					</div>
-				</div>
-				<div className='giftReq'>
-					<GiftParams />
-				</div>
+				{/* </div> */}
 			
 			</div>
 			{/* need to clean these up in their own component */}
