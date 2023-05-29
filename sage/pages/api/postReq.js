@@ -6,9 +6,10 @@ const corsMiddleware = cors({
 });
 
 export default function handler(req, res) {
-	if (req.method !== 'POST') {
-		return res.status(400).json({ message: 'Only POST requests allowed' });
-	}
+if (req.method !== 'POST') {
+	return res.status(400).send({ message: 'Only POST requests allowed' });
+}
+
 	const { recipient = '', relationship = '', interest = '' } = req.body;
 
 	const prompt = `Give me a gift idea for my "${relationship}" who likes "${interest}". Can I also have the response in a magical tone and tell my fortune. `;
