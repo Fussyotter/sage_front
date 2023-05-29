@@ -13,7 +13,6 @@ import Cors from 'cors';
 export default function Home() {
 	return (
 		<>
-			{/* <div className='big-container'> */}
 				<div className='header'>
 					<div className='cloudImage'></div>
 						<GiftParams />
@@ -29,13 +28,10 @@ export default function Home() {
 							<Signup />
 						</div>
 					<div className='result'>
-			{/* <GiftParams/> */}
 
 					</div>
-				{/* </div> */}
 			
 			</div>
-			{/* need to clean these up in their own component */}
 			<div id='background-wrap'>
 				<div className='x1'>
 					<div className='cloud'></div>

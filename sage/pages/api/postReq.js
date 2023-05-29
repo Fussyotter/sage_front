@@ -11,7 +11,7 @@ export default function handler(req, res) {
 	}
 	const { recipient = '', relationship = '', interest = '' } = req.body;
 
-	const prompt = `Give me a gift idea for  my "${relationship}" they like "${interest}".  5 items in an html list that are also links. Can I also have the response in magical tone with line breaks after each sentence.  Also tell my fortune`;
+	const prompt = `Give me a gift idea for my "${relationship}" who likes "${interest}". Can I also have the response in a magical tone and tell my fortune. `;
 
 	corsMiddleware(req, res, async () => {
 		try {
