@@ -80,14 +80,3 @@ const handleClick = async () => {
 		</div>
 	);
 }
-
-{
-	/* {gift && (
-	<div className="gift-result-wrapper">
-		<p>Your gift idea:</p>
-		<div className='gift-result'dangerouslySetInnerHTML={{ __html: gift }}></div>
-	</div> */
-}
-{
-	/* )} */
-}

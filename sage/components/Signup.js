@@ -54,7 +54,9 @@ export default function Signup() {
 	return (
 		<>
 			{!showForm ? (
-				<button className='signup-button'onClick={() => setShowForm(true)}>Sign up</button>
+				<button className='signup-button' onClick={() => setShowForm(true)}>
+					Sign up
+				</button>
 			) : (
 				<form>
 					<div>
@@ -82,7 +84,13 @@ export default function Signup() {
 						/>
 						<div className='invalid-feedback'>{formErrors.passwordError}</div>
 					</div>
-					<button className='signup-button'onClick={onSignupClick}>Sign up</button>
+					<button
+						type='button'
+						className='signup-button'
+						onClick={onSignupClick}>
+						Sign up
+					</button>
+
 					<button onClick={() => setShowForm(false)}>x</button>
 				</form>
 			)}
