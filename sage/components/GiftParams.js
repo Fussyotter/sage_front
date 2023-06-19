@@ -2,6 +2,9 @@ import React, { useContext, useState, useEffect } from 'react';
 import { GiftContext } from '@/context/CurrentGiftContext';
 import { BackgroundContext } from '@/context/BackgroundContext';
 import { UserContext } from '@/context/context';
+import { useSpring, useTransition, animated } from 'react-spring';
+import GiftResult from './GiftResult';
+
 
 export default function GiftParams() {
 	const {
@@ -18,7 +21,6 @@ export default function GiftParams() {
 	const [displayedGift, setDisplayedGift] = useState('');
 
 	useEffect(() => {
-		// console.log(gift);
 	}, [gift]);
 	const callApi = async (relationship, interest) => {
 		const response = await fetch('/api/postReq', {
@@ -54,10 +56,22 @@ const handleClick = async () => {
 		setMoving(false);
 	}
 };
+ const stretch = useSpring({
+		height: gift ? '600px' : '300px', // change values as per your design
+		from: { height: '300px' }, // starting point
+		config: { duration: 1000 }, // animate over 1 second
+ });
+
+ const transitions = useTransition(gift, {
+		from: { opacity: 0, transform: 'rotateX(90deg)' },
+		enter: { opacity: 1, transform: 'rotateX(0deg)' },
+		config: { mass: 5, tension: 500, friction: 80 },
+ });
+
 	return (
-		<div className='gift-params-container'>
+		<animated.div className='gift-params-container' style={stretch}>
 			{loggedInUser ? (
-				<h1> Consult the Wizard...for gift advice.</h1>
+				<h1> Consult the Wizard...for gift advice. <br></br>Log in to send messages to other users!</h1>
 			) : (
 				<h1> Consult the all powerful wizard for gift ideas. </h1>
 			)}
@@ -77,6 +91,15 @@ const handleClick = async () => {
 			<button className='submit-button' onClick={handleClick}>
 				Get Gift Idea
 			</button>
-		</div>
+			{transitions((style, item) =>
+				item ? (
+					<animated.div style={style}>
+						<GiftResult />
+					</animated.div>
+				) : (
+					''
+				)
+			)}
+		</animated.div>
 	);
 }

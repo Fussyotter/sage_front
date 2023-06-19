@@ -10,6 +10,7 @@ export default function Login() {
 
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -54,7 +55,7 @@ export default function Login() {
 
   return (
     <div className='login-container'>
-      {loggedInUser ? (
+      {loggedInUser  ? (
         <div>Welcome {loggedInUser}!</div>
       ) : loginStatus ? (
         <form className='login-form' onSubmit={handleLogin}>
@@ -89,12 +90,7 @@ export default function Login() {
         </button>
       )}
 
-      <style>{`
-        input {
-          display: block;
-          margin-bottom: 10px;
-        }
-      `}</style>
+     
     </div>
   );
 }

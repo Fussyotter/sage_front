@@ -52,14 +52,13 @@ export default function Signup() {
 	};
 
 	return (
-		<>
+    <div className='login-container'>
 			{!showForm ? (
 				<button className='signup-button' onClick={() => setShowForm(true)}>
 					Sign up
 				</button>
 			) : (
-				<form>
-					<div>
+				<form className='login-form'>
 						<label htmlFor='usernameId'>User name</label>
 						<input
 							className={formErrors.usernameError ? 'is-invalid' : ''}
@@ -70,9 +69,7 @@ export default function Signup() {
 							onChange={onChange}
 						/>
 						<div className='invalid-feedback'>{formErrors.usernameError}</div>
-					</div>
 
-					<div>
 						<label htmlFor='passwordId'>Your password</label>
 						<input
 							className={formErrors.passwordError ? 'is-invalid' : ''}
@@ -83,7 +80,6 @@ export default function Signup() {
 							onChange={onChange}
 						/>
 						<div className='invalid-feedback'>{formErrors.passwordError}</div>
-					</div>
 					<button
 						type='button'
 						className='signup-button'
@@ -94,6 +90,6 @@ export default function Signup() {
 					<button onClick={() => setShowForm(false)}>x</button>
 				</form>
 			)}
-		</>
+		</div>
 	);
 }

@@ -1,26 +1,33 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { GiftContext } from '@/context/CurrentGiftContext';
-import { BackgroundContext } from '@/context/BackgroundContext';
-import { UserContext } from '@/context/context';
+
+import { useSpring, animated } from 'react-spring';
 
 export default function GiftResult() {
-	const {
-		gift,
-		setGift,
-
-		relationship,
-		setRelationship,
-		interest,
-		setInterest,
-	} = useContext(GiftContext);
+	const { gift } = useContext(GiftContext);
 	if (!gift) {
 		return null;
 	}
 
+	const spin = useSpring({
+		to: {
+			transform: 'rotate(0deg)',
+			opacity: 1,
+		},
+		from: {
+			transform: 'rotate(360deg)',
+			opacity: 0,
+		},
+		config: {
+			tension: 50,
+			friction: 10,
+		},
+	});
+
 	return (
-		<div className='gift-result'>
+		<animated.div style={spin} className='gift-result'>
 			<p>MAGIC GIFT IDEA FOR YOU</p>
 			<div dangerouslySetInnerHTML={{ __html: gift }}></div>
-		</div>
+		</animated.div>
 	);
 }
