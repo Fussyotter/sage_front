@@ -71,9 +71,9 @@ const handleClick = async () => {
 	return (
 		<animated.div className='gift-params-container' style={stretch}>
 			{loggedInUser ? (
-				<h1> Consult the Wizard...for gift advice. <br></br>Log in to send messages to other users!</h1>
+				<h1> Consult the Wizard...for gift advice. </h1>
 			) : (
-				<h1> Consult the all powerful wizard for gift ideas. </h1>
+				<h1> Consult the all powerful wizard for gift ideas.<br></br>Log in to send messages to other users! </h1>
 			)}
 			<input
 				className='input-field'
